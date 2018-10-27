@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mg.microservice.springcloud.dao.UserMapper">
+
+    <!--未完待续-->
+    <resultMap id="UserMap" type="mg.microservice.springcloud.model.User">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="user_id" jdbcType="INTEGER" property="userId"/>
+        <result column="user_name" jdbcType="VARCHAR" property="userName"/>
+        <result column="user_password" jdbcType="VARCHAR" property="userPassword"/>
+        <result column="phone_number" jdbcType="VARCHAR" property="phoneNumber"/>
+    </resultMap>
+
+    <insert id="addUser" parameterType="mg.microservice.springcloud.model.User">
+        insert into user(id, user_id, user_name, user_password, phone_number)
+        value(#{id}, #{userId}, #{userName}, #{userPassword}, #{phoneNumber})
+    </insert>
+
+
+    <select id="selectUserById" parameterType="java.lang.Integer" resultType="UserMap">
+        select * from user where id=#{id}
+    </select>
+
+    <select id="selectUserByName" parameterType="java.lang.String" resultType="UserMap">
+        select * from user where user_name=#{userName}
+    </select>
+
+</mapper>
