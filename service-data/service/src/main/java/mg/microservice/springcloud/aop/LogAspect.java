@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 public class LogAspect {
 
     //具体的用法弄清楚
+
     @Pointcut("execution(public * mg.microservice.springcloud.*.*())")
     public void pointCut(){}
 
